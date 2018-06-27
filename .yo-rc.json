@@ -1,0 +1,10 @@
+{
+  "generator-jhipster-blueprint": {
+    "promptValues": {
+      "githubName": "avdev4j",
+      "authorName": "Anthony Viard",
+      "authorEmail": "anth.viard@gmail.com",
+      "authorUrl": "https://twitter.com/avdev4j"
+    }
+  }
+}
