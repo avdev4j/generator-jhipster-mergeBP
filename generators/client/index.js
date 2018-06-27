@@ -21,21 +21,12 @@ module.exports = class extends ClientGenerator {
     }
 
     get initializing() {
-        const phaseFromJHipster = super._initializing();
-
-        this.enableTranslation = true;
-        this.nativeLanguage = 'fr';
-        this.languages = ['en', 'fr'];
-        this.clientFramework = 'angularX';
-        this.useSass = true;
-
-        return phaseFromJHipster;
+        return super._initializing();
     }
 
     get prompting() {
         return {
-            // my own prompts
-            askForFileUpload: prompts.askForMyModule,
+            askForMyModule: prompts.askForMyModule,
 
             setSharedConfigOptions() {
                 this.configOptions.lastQuestion = this.currentQuestion;
