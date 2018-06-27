@@ -4,7 +4,10 @@
 
 # Introduction
 
-This is a [JHipster](http://jhipster.github.io/) blueprint, that is meant to be used in a JHipster application.
+This is a [JHipster](http://jhipster.github.io/) blueprint.
+The goal is to have a plan that can create a new application by merging both our files and those of jHipster.
+
+Don't be shy, follow me [@avdev4j](https://twitter.com/avdev4j) 
 
 # Prerequisites
 
