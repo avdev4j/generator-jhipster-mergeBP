@@ -2,12 +2,12 @@
 const chalk = require('chalk');
 const ClientGenerator = require('generator-jhipster/generators/client');
 const prompts = require('./prompts');
-const writeFiles = require('./files').writeFiles;
-
+const writeAngularFiles = require('./files-angular').writeFiles;
+const writeReactFiles = require('./files-react').writeFiles;
 
 module.exports = class extends ClientGenerator {
     constructor(args, opts) {
-        super(args, Object.assign({fromBlueprint: true}, opts)); // fromBlueprint variable is important
+        super(args, Object.assign({ fromBlueprint: true }, opts)); // fromBlueprint variable is important
 
         const jhContext = this.jhipsterContext = this.options.jhipsterContext;
 
@@ -25,14 +25,13 @@ module.exports = class extends ClientGenerator {
     }
 
     get prompting() {
-        return {
-            askForMyModule: prompts.askForMyModule,
+        const phaseFromJHipster = super._prompting();
 
-            setSharedConfigOptions() {
-                this.configOptions.lastQuestion = this.currentQuestion;
-                this.configOptions.totalQuestions = this.totalQuestions;
-            }
+        const myCustomPhaseSteps = {
+            askForMyModule: prompts.askForMyModule
         };
+
+        return Object.assign(phaseFromJHipster, myCustomPhaseSteps);
     }
 
     get configuring() {
@@ -46,7 +45,12 @@ module.exports = class extends ClientGenerator {
     get writing() {
         return {
             write() {
-                writeFiles.call(this);
+                switch (this.clientFramework) {
+                case 'react':
+                    return writeReactFiles.call(this);
+                default:
+                    return writeAngularFiles.call(this);
+                }
             }
         };
     }
