@@ -1,4 +1,3 @@
-
 module.exports = {
     askForMyModule
 };
@@ -12,7 +11,7 @@ function askForMyModule() {
             type: 'confirm',
             name: 'addMyModule',
             message: response => this.getNumberedQuestion('Would you like to add my module into your app?', true),
-            default: false
+            default: true
         }
     ];
     this.prompt(prompts).then((props) => {
